@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     capaInicio.addEventListener('click', () => {
         // Iniciar la música de JVKE
         if (musica) {
-            musica.volume = 5.0;
+            musica.volume = 1.0;
             musica.play().catch(e => console.log("Error al reproducir:", e));
         }
 
@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const radio = 300 + Math.random() * 700;
 
         div.style.setProperty('--x', Math.cos(angulo) * radio + "px");
-        div.style.setProperty('--y', Math.sin(angulo) * radio + "px");
-
+div.style.setProperty('--y', Math.sin(angulo) * radio + "px");
+    
         div.appendChild(el);
         universo.appendChild(div);
 
