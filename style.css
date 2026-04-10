@@ -1,83 +1,76 @@
 body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: #00050a;
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    background: #000; overflow: hidden;
     font-family: 'Courier Prime', monospace;
 }
 
 #escena-3d {
-    perspective: 1000px;
-    width: 100vw;
-    height: 100vh;
+    width: 100vw; height: 100vh;
+    perspective: 450px;
+    display: flex; align-items: center; justify-content: center;
 }
 
 #universo {
-    width: 100%;
-    height: 100%;
+    position: relative; width: 100%; height: 100%;
     transform-style: preserve-3d;
-}
-
-#capa-inicio {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, #001a2a 0%, #000000 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-    transition: opacity 0.8s;
-}
-
-.circulo-neon {
-    font-size: 50px;
-    margin-bottom: 20px;
-    animation: flotar 3s infinite ease-in-out;
-}
-
-#capa-inicio p {
-    color: #ff00de;
-    font-size: 1.5rem;
-    letter-spacing: 5px;
-    text-shadow: 0 0 10px #ff00de;
 }
 
 .elemento-volador {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform-style: preserve-3d;
-    animation: viaje 4s linear forwards;
-}
-
-.foto-pro {
-    width: 200px;
-    height: 250px;
-    object-fit: cover;
-    border: 3px solid #fff;
-    box-shadow: 0 0 20px rgba(255,255,255,0.5);
+    animation: viaje-estelar 4s linear forwards;
+    white-space: nowrap;
+    pointer-events: none;
 }
 
 .frase-pro {
+    font-weight: 700;
     color: white;
-    font-size: 2rem;
-    white-space: nowrap;
-    text-shadow: 0 0 15px var(--color-aura);
+    text-shadow: 0 0 12px var(--color-aura), 0 0 25px var(--color-aura);
+    text-transform: uppercase;
+    font-size: 20px;
 }
 
-@keyframes viaje {
-    0% { transform: translate3d(0, 0, -2000px); opacity: 0; }
-    20% { opacity: 1; }
-    100% { transform: translate3d(var(--x), var(--y), 500px); opacity: 0; }
+.foto-pro {
+    width: 130px;
+    border-radius: 12px;
+    border: 2px solid white;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
-@keyframes flotar {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+/* EFECTO DE ESQUIVE: Los elementos se abren al final */
+@keyframes viaje-estelar {
+    0% { 
+        transform: translate3d(calc(var(--x) * 0.1), calc(var(--y) * 0.1), -1200px) scale(0); 
+        opacity: 0; 
+    }
+    15% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { 
+        /* Al llegar al final, se mueven a su posición X e Y completa (lejos del centro) */
+        transform: translate3d(var(--x), var(--y), 600px) scale(3.5); 
+        opacity: 0; 
+    }
+}
+
+.linea-velocidad {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 2px; height: 350px;
+    background: linear-gradient(to top, transparent, #fff, transparent);
+    animation: estela 0.9s linear infinite;
+}
+
+@keyframes estela {
+    0% { transform: rotate(var(--ang)) translateY(0) translateZ(-1000px); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: rotate(var(--ang)) translateY(1300px) translateZ(500px); opacity: 0; }
+}
+
+#capa-inicio {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: black; z-index: 100; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; color: #ff00de; cursor: pointer;
 }
