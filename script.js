@@ -1,6 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => {
+     document.addEventListener('DOMContentLoaded', () => {
     const universo = document.getElementById('universo');
     const capaInicio = document.getElementById('capa-inicio');
+    const musica = document.getElementById('musica'); // <--- 1. ASEGÚRATE QUE ESTA LÍNEA ESTÉ AQUÍ
+
+    capaInicio.addEventListener('click', () => {
+        // <--- 2. JUSTO AQUÍ PONES EL PLAY --->
+        if (musica) {
+            musica.play();
+            musica.volume = 0.5;
+        }
+
+        capaInicio.style.display = 'none';
+        // ... aquí sigue el resto de tu código
     
     const frases = ["TE AMO", "MI UNIVERSO", "ERES MI VIDA", "❤️", "SOLO TÚ", "MI ESTRELLA", "💘", "MI TODO", "PARA SIEMPRE", "MI REINA", "ERES ARTE", "✨", "MI DESTINO", "TE ADORO", "X SIEMPRE", "MI CIELO"];
     const fotos = ["img/foto1.jpg", "img/foto2.jpg", "img/foto3.jpg", "img/foto4.jpg","img/foto5.jpg","img/foto6.jpg","img/foto7.jpg","img/foto8.jpg","foto9.jpg","img/foto10.jpg"];
