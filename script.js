@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     capaInicio.addEventListener('click', () => {
         // Iniciar la música de JVKE
         if (musica) {
-            musica.volume = 0.6;
+            musica.volume = 5.0;
             musica.play().catch(e => console.log("Error al reproducir:", e));
         }
 
